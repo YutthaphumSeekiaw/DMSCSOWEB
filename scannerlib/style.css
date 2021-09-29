@@ -1,0 +1,275 @@
+@charset "windows-874";
+/*ให้ใช้ font ตามรายการข้างล่างในทุกตัวอักษรที่แสดงในเว็บเพจ */
+* {
+	font-family: tahoma, "ms Sans Serif", Verdana, loma;
+}
+body {
+	margin: 0px;
+	padding: 0px;
+	background-color: #DAD7D7;
+}
+/*ตารางสีเทา login*/
+#containner #main table.table-2 {
+	border: 1px solid #e3e3e3;
+	background-color: #f2f2f2;
+        width: 350px;
+	border-radius: 6px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+}
+#containner #main table.table-2 td, #containner #main table.table-2 th {
+	padding: 5px;
+	color: #333;
+}
+#containner #main table.table-2 th {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	padding: .2em 0 .2em .5em;
+	text-align: left;
+	color: #4B4B4B;
+	background-color: #C8C8C8;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#f2f2f2), to(#e3e3e3), color-stop(.6,#B3B3B3));
+	background-image: -moz-linear-gradient(top, #D6D6D6, #B0B0B0, #B3B3B3 90%);
+	border-bottom: solid 1px #999;
+}
+#containner #main table.table-2 th {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 17px;
+	line-height: 20px;
+	font-style: normal;
+	font-weight: normal;
+	text-align: left;
+	text-shadow: white 1px 1px 1px;
+}
+#containner #main table.table-2 td {
+	line-height: 20px;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	border-bottom: 1px solid #fff;
+	border-top: 1px solid #fff;
+}
+#containner #main table.table-2 td:hover {
+	background-color: #fff;
+}
+/*กำหนดส่วนแสดงภาพและสัญลักษณ์ด้านบนสุดของเว็บเพจ */
+#head {
+	background-image: url(../images/head.jpg);
+	background-repeat: no-repeat;
+	clear: both;
+	height: 150px;
+	width: 1096px;
+	border: 2px solid #FFFFFF;
+}
+#containner {
+	width: 1100px;
+	border-top-width: 5px;
+	border-top-style: solid;
+	border-top-color: #CBC2A5;
+	margin-top: 5px;
+	text-align: left;
+}
+#containner #main {
+	background-image: url(../images/bg.jpg);
+	float: left;
+	width: 1100px;
+	background-color: #FFFFFF;
+	background-repeat: repeat-y;
+}
+
+/*กำหนดตำแหน่ง และขนาดของพื้นที่แสดงผลทางซ้ายมือ */
+#containner #main #left {
+	float: left;
+	width: 205px;
+	margin:0px;
+	padding:0px;
+}
+
+/*กำหนดการแสดงผลของ navigation*/
+#containner #main #left #navigation {
+	width: 205px;
+	margin:0px;
+	padding:0px;
+	float: left;
+}
+
+/*แสดงผลรายการหัวข้อที่อยู่ใน h1 ด้วยพื้นหลังสีแดง */
+#containner #main #left #navigation h1.red {
+	height: 18px;
+	width: 205px;
+	margin-top:0px;
+	margin-bottom:5px;
+	position: relative;
+	left: 5px;
+	top: 5px;
+	background-image: url(../images/red.jpg);
+	padding: 5px;
+	color: #FFFFFF;
+	font-size: 15px;
+	font-weight: bold;
+	display: block;
+}
+/*แสดงรายการที่ตามหลังหัวข้อหลักที่อยู่ใน UL */
+#containner #main #left #navigation ul {
+	padding:0px;
+	margin-left:28px;
+	margin-top:5px;
+	position:relative;
+	list-style-image: url(../images/arrow.gif);
+}
+#containner #main #left #navigation  li {
+	font-size: 13px;
+	line-height:20px;
+	list-style-type: none;
+}
+#containner #main #left #navigation  li  a{
+	font-size: 13px;
+	line-height:20px;
+	text-decoration:none;
+	color:#000000;
+}
+
+/*แสดงรายการที่อยู่ทางขวามือทั้งหมด */
+#containner #main #right {
+	float: right;
+	width: 870px;
+}
+/*สร้างกล่องล้อมรอบรายละเีอียด */
+#containner #main #right #content {
+	background-color: #FFFEE9;
+	clear: both;
+	width: 840px;
+	border: 2px solid #F9E0BD;
+	text-align: left;
+	margin: 10px;
+	position: relative;
+}
+/*แสดงผลหัวข้อของเนื้อหาสีน้ำตาลแดง*/
+#containner #main #right #content.maroon h1 {
+	font-size: 15px;
+	color: #6B0303;
+	border-left-width: 5px;
+	border-left-style: solid;
+	border-left-color: #6B0303;
+	margin: 5px;
+	height: 20px;
+	width: 850px;
+	padding-left: 5px;
+}
+
+/*แสดงผลชื่อผู้แต่ง*/
+#containner #main #right #content #authors {
+	font-size: 12px;
+	color: #000000;
+	position: absolute;
+	margin:0px;
+	padding:0px;
+	top: 25px;
+	left:15px;
+}
+
+/*แสดงผลวันที่สีเขียว*/
+#containner #main #right #content.maroon #date  {
+	color: #FFFFFF;
+	background-color: #60A248;
+	margin: 0px;
+	padding-top: 10px;
+	padding-bottom:10px;
+	height: 10px;
+	width: 100px;
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+}
+/*แสดงผลส่วนของเนื้อหา*/
+#containner #main #right #content #story {
+	font-size: 14px;
+	line-height:20px;
+	text-indent: 5px;
+	margin-top: 5px;
+	margin-right: 5px;
+	margin-bottom: 40px;
+	margin-left: 5px;
+}
+/*แสดงผลปุ่ม อ่านเนื้อหาเพิ่มเติม สีเขียว */
+#containner #main #right #content.maroon #more {
+	color: #FFFFFF;
+	background-color: #60A248;
+	margin: 0px;
+	padding-top: 5px;
+	padding-bottom:5px;
+	height: 15px;
+	width: 150px;
+	position: absolute;
+	bottom: 8px;
+	right: 5px;
+	font-size: 12px;
+	font-weight: bold;
+	text-align: center;
+}
+#containner #main #right #content.maroon #more a {
+	color: #FFFFFF;
+	text-decoration:none;
+}
+/*ตารางแสดงข้อมูล*/ 
+#containner #main #right #content.maroon table.imagetable {
+	font-family: verdana,arial,sans-serif;
+	font-size:11px;
+	color:#333333;
+	border-width: 1px;
+	border-color: #999999;
+	border-collapse: collapse;
+}
+#containner #main #right #content.maroon  table.imagetable th {
+	background:#b5cfd2 url(../images/cell-blue.jpg);
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #999999;
+}
+#containner #main #right #content.maroon table.imagetable td {
+	background:#dcddc0 url(../images/cell-grey.jpg);
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #999999;
+}
+
+/*แสดงผลส่วนล่างสุดของเว็บเพจ*/
+#footer {
+	background-color: #CBC4A7;
+	clear: both;
+	width: 1100px;
+	height: 35px;
+}
+#footer p {
+	font-size: 10px;
+	color: #453721;
+	margin-top : 5px;
+	margin-left:10px;
+	padding: 0px;
+	float: left;
+	text-align: left;
+}
+#footer ul {
+	padding:0px;
+	margin:0px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #453721;
+	float: right;
+	list-style-type: none;
+	width:900px;
+	position:relative;
+}
+#footer li {
+	position:relative;
+	top:10px;
+	float: left;
+	left: 20px;
+}
+#footer li a{
+	color: #453721;
+	text-decoration:none;
+}

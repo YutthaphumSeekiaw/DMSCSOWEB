@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'SCG';
+    font-weight: normal;
+   src:  url('~/static/font/SCG-Reg.otf') format('otf'); /* IE9 Compat Mode */
+    src: url('~/static/font/SCG-Bol.otf') format('otf'),
+      url('~/static/font/SCG-Reg.otf') format('otf'),
+      url('~/static/font/SCG-Lig.otf') format('otf'),
+      url('~/static/font/SCG-Italic.otf') format('otf');
+  }

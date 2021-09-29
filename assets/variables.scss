@@ -1,0 +1,44 @@
+// Ref: https://github.com/nuxt-community/vuetify-module#customvariables
+//
+// The variables you want to modify
+// $font-size-root: 20px;
+
+// $body-font-family: 'SCG', serif;
+
+// .v-application {
+//   .display-1,
+//   .display-2,
+//   .display-3,
+//   .display-4,
+//   .headline,
+//   .title,
+//   .subtitle-1,
+//   .subtitle-2,
+//   .body-1,
+//   .body-2,
+//   .caption,
+//   .overline {
+//     font-family: $body-font-family !important;
+//   }
+// }
+// @font-face {
+//     font-family: 'SCG';
+//     font-weight: normal;
+//    src:  url('~/static/font/SCG-Reg.otf') format('otf'); /* IE9 Compat Mode */
+//     src: url('~/static/font/SCG-Bol.otf') format('otf'),
+//       url('~/static/font/SCG-Reg.otf') format('otf'),
+//       url('~/static/font/SCG-Lig.otf') format('otf'),
+//       url('~/static/font/SCG-Italic.otf') format('otf');
+//   }
+
+
+// .v-application{
+//   .headline, .title, .caption, .overline{
+//     font-family: 'SCG', sans-serif !important;  
+//   }  
+//   [class*="display-"],[class*="subtitle-"],[class*="body-"]{
+//     font-family: 'SCG', sans-serif !important;  
+//   }
+// }
+
+
