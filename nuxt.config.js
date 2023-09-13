@@ -33,7 +33,7 @@ module.exports = {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['@mdi/font/css/materialdesignicons.css', '~/assets/main.css'],
   /*
    ** Plugins to load before mounting the App
    */
@@ -54,8 +54,21 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/auth',
-    'nuxt-sweetalert2'
+    'nuxt-sweetalert2',
+    'nuxt-helmet'
+    // 'nuxt-material-design-icons'
   ],
+
+  // helmet options
+  // @see https://helmetjs.github.io/docs/
+  helmet: {
+    /*
+    frameguard: false,
+    ...
+    */
+    frameguard: { action: 'deny' }
+  },
+
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
@@ -94,6 +107,39 @@ module.exports = {
   //   }
   // },
 
+  // auth: {
+  //   auth: {
+  //     redirect: {
+  //       login: '/login'
+  //     }
+  //   },
+  //   strategies: {
+  //     local: {
+  //       endpoints: {
+  //         login: {
+  //           url: 'https://localhost:44378/api/Login/Sign_In',
+  //           method: 'post',
+  //           propertyName: 'result.token'
+  //         },
+  //         logout: {
+  //           url: 'https://localhost:44378/api/Login/Sign_Out',
+  //           method: 'post'
+  //         },
+  //         user: {
+  //           url: 'https://localhost:44378/api/Login/me',
+  //           method: 'get',
+  //           propertyName: 'result'
+  //         }
+  //       }
+  //       // tokenName: 'auth-token'
+
+  //       // tokenRequired: true,
+  //       // tokenType: 'bearer'
+  //       // autoFetchUser: true
+  //     }
+  //   }
+  // },
+
   auth: {
     auth: {
       redirect: {
@@ -104,16 +150,16 @@ module.exports = {
       local: {
         endpoints: {
           login: {
-            url: 'https://localhost:44378/api/Login/Sign_In',
+            url: 'https://10.100.12.82/dmscsoapi/api/Login/Sign_In',
             method: 'post',
             propertyName: 'result.token'
           },
           logout: {
-            url: 'https://localhost:44378/api/Login/Sign_Out',
+            url: 'https://10.100.12.82/dmscsoapi/api/Login/Sign_Out',
             method: 'delete'
           },
           user: {
-            url: 'https://localhost:44378/api/Login/me',
+            url: 'https://10.100.12.82/dmscsoapi/api/Login/me',
             method: 'get',
             propertyName: 'result'
           }

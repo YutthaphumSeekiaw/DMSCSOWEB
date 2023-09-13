@@ -101,6 +101,11 @@ export function moveupandmovedownfiletransaction(
   return request('post', url, body, true)
 }
 
+export function InsertMeeting(seqOwner, user, seqInsert, agenda, body) {
+  const url = `Data/InsertMeeting?seqOwner=${seqOwner}&user=${user}&seqInsert=${seqInsert}&agenda=${agenda}`
+  return request('post', url, body, true)
+}
+
 export function savefileuploaddata(body) {
   const url = `Data/SaveDataFileUpload`
   return request('post', url, body, true)

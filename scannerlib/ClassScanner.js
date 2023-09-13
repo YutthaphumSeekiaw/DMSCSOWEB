@@ -79,7 +79,7 @@ function DeviceScan() {
         MessageDialog('Unconnected Application Scanner')
         window.fingerprint.DeviceStatus = cmd
         ShowStatusDevice('ShowStatus', 'Unconnected Application Scanner')
-      } else if (cmd == window.DeviceStatus.ConnectedDevice) {
+      } else if (cmd === window.DeviceStatus.ConnectedDevice) {
         MessageDialog('Application Scanner Connected')
         window.fingerprint.DeviceStatus = cmd
         ShowStatusDevice('ShowStatus', 'Application Scanner Connected')
