@@ -35,6 +35,7 @@ export async function request(method, url, data, auth = false) {
     })
     return response
   } catch (error) {
+    var sdsdf = ""
     return error
   }
 }
