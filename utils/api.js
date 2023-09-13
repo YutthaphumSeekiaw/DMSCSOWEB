@@ -36,6 +36,7 @@ export async function request(method, url, data, auth = false) {
     return response
   } catch (error) {
     var sdsdf = ""
+    var dedd = "sadas"
     return error
   }
 }
