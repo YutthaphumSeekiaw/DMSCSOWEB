@@ -46,8 +46,8 @@ export async function request(method, url, data, auth = false) {
   //   xsrfHeaderName: 'X-XSRF-TOKEN'
   // }
   // const HOSTNAME = `https://csodms.scg.com/csoapi/api/`
-  // const HOSTNAME = `https://localhost:44378/api/`
-  const HOSTNAME = `https://10.100.12.82/dmscsoapi/api/`
+  const HOSTNAME = `https://localhost:44378/api/`
+  // const HOSTNAME = `https://10.100.12.82/dmscsoapi/api/`
   url = HOSTNAME + url
   try {
     const response = await axios({

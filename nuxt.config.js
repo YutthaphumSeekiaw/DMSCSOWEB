@@ -54,6 +54,7 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/auth',
+    '@nuxtjs/auth-next',
     'nuxt-sweetalert2',
     'nuxt-helmet'
     // 'nuxt-material-design-icons'
@@ -67,6 +68,9 @@ module.exports = {
     ...
     */
     frameguard: { action: 'deny' }
+  },
+  router: {
+    middleware: ['auth']
   },
 
   /*
@@ -141,38 +145,74 @@ module.exports = {
   // },
 
   auth: {
-    auth: {
-      redirect: {
-        login: '/login'
-      }
-    },
+    // localStorage: false,
     strategies: {
+      AAD: {
+        scheme: 'openIDConnect',
+        clientId: '79f5c415-c232-41ef-b776-2937f2bf048c',
+        endpoints: {
+          configuration:
+            'https://login.microsoftonline.com/df47cc98-0e84-4ab8-aaf3-88df33116bc9/v2.0/.well-known/openid-configuration'
+        },
+        // idToken: {
+        //   property: "id_token",
+        //   maxAge: 60 * 60 * 24 * 30,
+        //   prefix: "_id_token.",
+        //   expirationPrefix: "_id_token_expiration.",
+        // },
+        token: {
+          property: 'id_token',
+          type: 'Bearer',
+          global: true,
+          maxAge: 1800
+        },
+        responseType: 'code',
+        grantType: 'authorization_code',
+        scope: ['openid', 'profile'],
+        codeChallengeMethod: 'S256'
+      },
       local: {
+        token: {
+          property: 'result.token',
+          global: true,
+          // required: true,
+          type: 'Bearer'
+        },
+        idToken: {
+          property: 'result.token',
+          maxAge: 60 * 60 * 24 * 30
+          // prefix: "_id_token.",
+          // expirationPrefix: "_id_token_expiration.",
+        },
+        // user: {
+        //   property: 'user',
+        //   autoFetch: true
+        // },
         endpoints: {
           login: {
-            url: 'https://10.100.12.82/dmscsoapi/api/Login/Sign_In',
+            url: 'https://localhost:44378/api/Login/Sign_In',
             method: 'post',
             propertyName: 'result.token'
-          },
-          logout: {
-            url: 'https://10.100.12.82/dmscsoapi/api/Login/Sign_Out',
-            method: 'delete'
-          },
-          user: {
-            url: 'https://10.100.12.82/dmscsoapi/api/Login/me',
-            method: 'get',
-            propertyName: 'result'
           }
+          // logout: {
+          //   url: 'https://localhost:44378/api/Login/Sign_Out',
+          //   method: 'post'
+          // },
+          // user: {
+          //   url: 'https://localhost:44378/api/Login/me',
+          //   method: 'get',
+          //   propertyName: 'result'
+          // }
         }
-        // tokenName: 'auth-token'
-
-        // tokenRequired: true,
-        // tokenType: 'bearer'
-        // autoFetchUser: true
       }
+    },
+    redirect: {
+      login: '/',
+      logout: '/',
+      callback: '/callback',
+      home: '/index'
     }
   },
-
   axios: {},
   /*
    ** vuetify module configuration

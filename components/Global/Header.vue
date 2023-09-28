@@ -9,9 +9,9 @@
       contain
     ></v-img>
     <v-toolbar-title
-      v-text="title"
-      @click="handleClickTitle"
       style="cursor:pointer"
+      @click="handleClickTitle"
+      v-text="title"
     />
     <v-spacer />
     <v-menu
@@ -53,8 +53,10 @@
               </v-btn>
             </v-list-item-avatar>
             <v-list-item-content>
-              <v-list-item-title>{{ this.$auth.user.name }}</v-list-item-title>
-              <v-list-item-subtitle>{{
+              <v-list-item-title v-if="this.$auth.loggedIn">{{
+                this.$auth.user.name
+              }}</v-list-item-title>
+              <v-list-item-subtitle v-if="this.$auth.loggedIn">{{
                 this.$auth.user.masterRole.roleName
               }}</v-list-item-subtitle>
             </v-list-item-content>
