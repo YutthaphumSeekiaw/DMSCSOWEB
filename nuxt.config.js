@@ -207,7 +207,7 @@ module.exports = {
       }
     },
     redirect: {
-      login: '/',
+      login: '/login',
       logout: '/',
       callback: '/callback',
       home: '/index'
