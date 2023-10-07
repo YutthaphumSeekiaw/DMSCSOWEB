@@ -37,7 +37,7 @@ module.exports = {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [{ src: '@/plugins/adal', ssr: false, mode: 'client' }],
   /*
    ** Nuxt.js dev-modules
    */
@@ -54,7 +54,7 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/auth',
-    '@nuxtjs/auth-next',
+    // '@nuxtjs/auth-next',
     'nuxt-sweetalert2',
     'nuxt-helmet'
     // 'nuxt-material-design-icons'
@@ -69,9 +69,9 @@ module.exports = {
     */
     frameguard: { action: 'deny' }
   },
-  router: {
-    middleware: ['auth']
-  },
+  // router: {
+  //   middleware: ['auth']
+  // },
 
   /*
    ** Axios module configuration
@@ -111,108 +111,155 @@ module.exports = {
   //   }
   // },
 
-  // auth: {
-  //   auth: {
-  //     redirect: {
-  //       login: '/login'
-  //     }
-  //   },
-  //   strategies: {
-  //     local: {
-  //       endpoints: {
-  //         login: {
-  //           url: 'https://localhost:44378/api/Login/Sign_In',
-  //           method: 'post',
-  //           propertyName: 'result.token'
-  //         },
-  //         logout: {
-  //           url: 'https://localhost:44378/api/Login/Sign_Out',
-  //           method: 'post'
-  //         },
-  //         user: {
-  //           url: 'https://localhost:44378/api/Login/me',
-  //           method: 'get',
-  //           propertyName: 'result'
-  //         }
-  //       }
-  //       // tokenName: 'auth-token'
-
-  //       // tokenRequired: true,
-  //       // tokenType: 'bearer'
-  //       // autoFetchUser: true
-  //     }
-  //   }
-  // },
-
   auth: {
-    // localStorage: false,
+    auth: {
+      redirect: {
+        login: '/login'
+      }
+    },
     strategies: {
-      AAD: {
-        scheme: 'openIDConnect',
-        clientId: '79f5c415-c232-41ef-b776-2937f2bf048c',
-        endpoints: {
-          configuration:
-            'https://login.microsoftonline.com/df47cc98-0e84-4ab8-aaf3-88df33116bc9/v2.0/.well-known/openid-configuration'
-        },
-        // idToken: {
-        //   property: "id_token",
-        //   maxAge: 60 * 60 * 24 * 30,
-        //   prefix: "_id_token.",
-        //   expirationPrefix: "_id_token_expiration.",
-        // },
-        token: {
-          property: 'id_token',
-          type: 'Bearer',
-          global: true,
-          maxAge: 1800
-        },
-        responseType: 'code',
-        grantType: 'authorization_code',
-        scope: ['openid', 'profile'],
-        codeChallengeMethod: 'S256'
-      },
       local: {
-        token: {
-          property: 'result.token',
-          global: true,
-          // required: true,
-          type: 'Bearer'
-        },
-        idToken: {
-          property: 'result.token',
-          maxAge: 60 * 60 * 24 * 30
-          // prefix: "_id_token.",
-          // expirationPrefix: "_id_token_expiration.",
-        },
-        // user: {
-        //   property: 'user',
-        //   autoFetch: true
-        // },
         endpoints: {
           login: {
             url: 'https://localhost:44378/api/Login/Sign_In',
             method: 'post',
             propertyName: 'result.token'
+          },
+          logout: {
+            url: 'https://localhost:44378/api/Login/Sign_Out',
+            method: 'post'
+          },
+          user: {
+            url: 'https://localhost:44378/api/Login/me',
+            method: 'get',
+            propertyName: 'result'
           }
-          // logout: {
-          //   url: 'https://localhost:44378/api/Login/Sign_Out',
-          //   method: 'post'
-          // },
-          // user: {
-          //   url: 'https://localhost:44378/api/Login/me',
-          //   method: 'get',
-          //   propertyName: 'result'
-          // }
         }
+        // tokenName: 'auth-token'
+
+        // tokenRequired: true,
+        // tokenType: 'bearer'
+        // autoFetchUser: true
       }
-    },
-    redirect: {
-      login: '/login',
-      logout: '/',
-      callback: '/callback',
-      home: '/index'
     }
   },
+
+  // auth: {
+  //   // localStorage: false,
+  //   strategies: {
+  //     local: {
+  //       token: {
+  //         property: 'result.token',
+  //         global: true,
+  //         // required: true,
+  //         type: 'Bearer'
+  //       },
+  //       idToken: {
+  //         property: 'result.token',
+  //         maxAge: 60 * 60 * 24 * 15
+  //         // prefix: "_id_token.",
+  //         // expirationPrefix: "_id_token_expiration.",
+  //       },
+  //       // user: {
+  //       //   property: 'user',
+  //       //   autoFetch: true
+  //       // },
+  //       endpoints: {
+  //         login: {
+  //           url: 'https://localhost:44378/api/Login/Sign_In',
+  //           method: 'post',
+  //           propertyName: 'result.token'
+  //         }
+  //         // logout: {
+  //         //   url: 'https://localhost:44378/api/Login/Sign_Out',
+  //         //   method: 'post'
+  //         // },
+  //         // user: {
+  //         //   url: 'https://localhost:44378/api/Login/me',
+  //         //   method: 'get',
+  //         //   propertyName: 'result'
+  //         // }
+  //       }
+  //     }
+  //   },
+  //   redirect: {
+  //     login: '/login'
+  //     // logout: '/',
+  //     // callback: '/login',
+  //     // home: '/'
+  //   }
+  // },
+  // ================================== Nuxt-auth ==========
+  // auth: {
+  //   // localStorage: false,
+  //   strategies: {
+  //     AAD: {
+  //       scheme: 'openIDConnect',
+  //       clientId: '79f5c415-c232-41ef-b776-2937f2bf048c',
+  //       endpoints: {
+  //         configuration:
+  //           'https://login.microsoftonline.com/df47cc98-0e84-4ab8-aaf3-88df33116bc9/v2.0/.well-known/openid-configuration'
+  //       },
+  //       // idToken: {
+  //       //   property: "id_token",
+  //       //   maxAge: 60 * 60 * 24 * 30,
+  //       //   prefix: "_id_token.",
+  //       //   expirationPrefix: "_id_token_expiration.",
+  //       // },
+  //       token: {
+  //         property: 'id_token',
+  //         type: 'Bearer',
+  //         global: true,
+  //         maxAge: 1800
+  //       },
+  //       responseType: 'code',
+  //       grantType: 'authorization_code',
+  //       scope: ['openid', 'profile'],
+  //       codeChallengeMethod: 'S256'
+  //     },
+  //     local: {
+  //       token: {
+  //         property: 'result.token',
+  //         global: true,
+  //         // required: true,
+  //         type: 'Bearer'
+  //       },
+  //       idToken: {
+  //         property: 'result.token',
+  //         maxAge: 60 * 60 * 24 * 30
+  //         // prefix: "_id_token.",
+  //         // expirationPrefix: "_id_token_expiration.",
+  //       },
+  //       // user: {
+  //       //   property: 'user',
+  //       //   autoFetch: true
+  //       // },
+  //       endpoints: {
+  //         login: {
+  //           url: 'https://localhost:44378/api/Login/Sign_In',
+  //           method: 'post',
+  //           propertyName: 'result.token'
+  //         }
+  //         // logout: {
+  //         //   url: 'https://localhost:44378/api/Login/Sign_Out',
+  //         //   method: 'post'
+  //         // },
+  //         // user: {
+  //         //   url: 'https://localhost:44378/api/Login/me',
+  //         //   method: 'get',
+  //         //   propertyName: 'result'
+  //         // }
+  //       }
+  //     }
+  //   },
+  //   redirect: {
+  //     login: '/login',
+  //     logout: '/',
+  //     callback: '/callback',
+  //     home: '/index'
+  //   }
+  // },
+  // ================================== End Nuxt-auth ==========
   axios: {},
   /*
    ** vuetify module configuration

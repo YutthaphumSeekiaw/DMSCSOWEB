@@ -1,11 +1,11 @@
 <template lang="html">
   <div>
     <v-app dark>
-      <v-content>
+      <v-main>
         <v-container>
           <nuxt />
         </v-container>
-      </v-content>
+      </v-main>
     </v-app>
   </div>
 </template>

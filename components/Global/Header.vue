@@ -53,10 +53,8 @@
               </v-btn>
             </v-list-item-avatar>
             <v-list-item-content>
-              <v-list-item-title v-if="this.$auth.loggedIn">{{
-                this.$auth.user.name
-              }}</v-list-item-title>
-              <v-list-item-subtitle v-if="this.$auth.loggedIn">{{
+              <v-list-item-title>{{ this.$auth.user.name }}</v-list-item-title>
+              <v-list-item-subtitle>{{
                 this.$auth.user.masterRole.roleName
               }}</v-list-item-subtitle>
             </v-list-item-content>
@@ -103,7 +101,7 @@ export default {
   },
   methods: {
     init() {
-      if (this.$auth.user.isAd) {
+      if (this.$auth.user.isAd !== 'LOCAL') {
         this.arraylist = ['Version 1.0', 'ออกจากระบบ']
       } else {
         this.arraylist = ['Version 1.0', 'เปลี่ยนรหัสผ่าน', 'ออกจากระบบ']
@@ -113,8 +111,22 @@ export default {
       if (text === 'เปลี่ยนรหัสผ่าน') {
         this.$router.push({ name: 'settingpassword' })
       } else if (text === 'ออกจากระบบ') {
-        this.$nuxt.$auth.logout()
-        this.$router.push({ name: 'login' })
+        if (this.$auth.user.isAd === 'SCGAZUREAD') {
+          this.$adal.signOut()
+        } else {
+          this.$nuxt.$auth.logout()
+          this.$router.push({ name: 'login' })
+        }
+        // if (
+        //   /^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+$/.test(
+        //     this.$nuxt.$auth.user.userName
+        //   )
+        // ) {
+        //   this.$adal.signOut()
+        // } else {
+        //   this.$nuxt.$auth.logout()
+        //   this.$router.push({ name: 'login' })
+        // }
       }
     },
     toggleDrawer() {

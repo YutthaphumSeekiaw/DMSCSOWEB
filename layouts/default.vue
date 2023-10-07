@@ -3,11 +3,11 @@
     <Sidebar></Sidebar>
     <Topbar></Topbar>
     <Footer></Footer>
-    <v-content>
+    <v-main>
       <v-container>
         <nuxt></nuxt>
       </v-container>
-    </v-content>
+    </v-main>
   </v-app>
 </template>
 

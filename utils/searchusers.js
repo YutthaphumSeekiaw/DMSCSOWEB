@@ -27,6 +27,11 @@ import { request } from './api'
 //     return request('delete', url, {}, true)
 //   }
 
+export function me() {
+  const url = `Login/Me`
+  return request('get', url, {}, true)
+}
+
 export function SearchUser(body) {
   const url = `User/SearchUser`
   return request('post', url, body, true)
